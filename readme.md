@@ -13,6 +13,6 @@ Use `notepad $profile` to add this to your PowerShell profile
 *During first run the GitHub token will be saved to a local environment variable `$env:githubToken` as plain text*
 
 ## Usage
-Type 'createProject' to setup project on local machine, create remote GitHub repo and initial commit
+`createProject` will prompt for a project name
 
 ###### Inspired by [Kalle Hallden](https://youtu.be/7Y8Ppin12r4)
