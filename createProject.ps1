@@ -1,4 +1,12 @@
 function createProject() {
+  # Check for GitHub token
+  if(-not (Test-Path env:githubToken)){
+    $token = Read-Host -Prompt "Github personal access token:"
+    Write-Host "Saving token to environment variable"
+    [System.Environment]::SetEnvironmentVariable('githubToken', $token, [System.EnvironmentVariableTarget]::User)
+  } 
+
+
   $headers = @{
     "accept"        = "application/vnd.github.v3+json"
     "Authorization" = "Bearer $env:githubToken"
