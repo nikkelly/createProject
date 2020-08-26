@@ -1,4 +1,3 @@
-# createProject
 Create a local project, remote GitHub repository and intial commit with a single command. 
 
 ## Installation
