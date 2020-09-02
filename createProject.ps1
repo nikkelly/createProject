@@ -45,7 +45,7 @@ function createProject() {
   $response | ConvertTo-Json
 
   # create local repo
-  Write-Output "# testProject" >> README.md
+  Write-Output "# $projectName" >> README.md
   git init
   git add README.md
   git commit -m "first commit"
