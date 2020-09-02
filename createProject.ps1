@@ -1,6 +1,6 @@
 function createProject() {
   # Check for GitHub token
-  if(-not (Test-Path env:githubToken)){
+  if (-not (Test-Path env:githubToken)) {
     $token = Read-Host -Prompt "Github personal access token:"
     Write-Host "Saving token to environment variable"
     [System.Environment]::SetEnvironmentVariable('githubToken', $token, [System.EnvironmentVariableTarget]::User)
@@ -14,20 +14,25 @@ function createProject() {
   }
   $projectName = Read-Host 'Project Name: '
   $privateAnswer = Read-Host 'Private Repo? (Y / N)'
-  Switch ($privateAnswer)
-  {
-    Y {Write-Host 'Creating new private repo'; $body = "{
+  Switch ($privateAnswer) {
+    Y {
+      Write-Host 'Creating new private repo'; $body = "{
       `n    `"name`":`"$projectName`",
       `n    `"private`":true
-      `n}"}
-    N {Write-Host 'Creating new public repo'; $body = "{
+      `n}"
+    }
+    N {
+      Write-Host 'Creating new public repo'; $body = "{
       `n    `"name`":`"$projectName`",
       `n    `"private`":false
-      `n}"}
-    Default {Write-Host 'Default, creating new private repo'; $body = "{
+      `n}"
+    }
+    Default {
+      Write-Host 'Default, creating new private repo'; $body = "{
       `n    `"name`":`"$projectName`",
       `n    `"private`":true
-      `n}"}
+      `n}"
+    }
   }
 
   # Create local project folder
@@ -46,4 +51,7 @@ function createProject() {
   git commit -m "first commit"
   git remote add origin https://github.com/nikkelly/$projectName
   git push -u origin master
+
+  # open visual studio
+  code .
 }
